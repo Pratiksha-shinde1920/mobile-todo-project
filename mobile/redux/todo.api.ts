@@ -11,7 +11,7 @@ export const todoApi = createApi({
             getTodo: builder.query<GET_TODO_RESPONSE, GET_TODO_REQUEST>({
                 query: () => {
                     return {
-                        url: "/get",
+                        url: "/read",
                         method: "GET"
                     }
                 },
@@ -30,7 +30,7 @@ export const todoApi = createApi({
             updateTodo: builder.mutation<UPDATE_TODO_RESPONSE, UPDATE_TODO_REQUEST>({
                 query: userData => {
                     return {
-                        url: "/update/" + userData.id,
+                        url: "/update/" + userData._id,
                         method: "PUT",
                         body: userData
                     }
@@ -52,4 +52,4 @@ export const todoApi = createApi({
     }
 })
 
-export const { useGetTodoQuery, useAddTodoMutation, useUpdateTodoMutation, useDeleteTodoMutation } = todoApi
+export const { useGetTodoQuery,useLazyGetTodoQuery, useAddTodoMutation, useUpdateTodoMutation, useDeleteTodoMutation } = todoApi
